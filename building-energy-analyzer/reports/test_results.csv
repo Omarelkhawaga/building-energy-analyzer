@@ -1,0 +1,7 @@
+test,type,case,input,expected,actual,result
+1,Valid,Daily energy of a normal room,"lighting 1, AC 5, equipment 2 kW, 8 h, 50 m2",64.0 kWh/day,64.0 kWh/day,PASS
+2,Valid,"Boundary values (24 h, zero power / 0 h)",hours = 24 with 13.2 kW; all power = 0 with hours = 0,316.8 kWh/day and 0.0 kWh/day,316.8 kWh/day and 0.0 kWh/day,PASS
+3,Valid,AC power reduced by 20 % (room R01),"R01 from rooms.csv, reduction = 20 %",143.0 -> 125.0 kWh/day,143.0 -> 125.0 kWh/day,PASS
+4,Invalid,Area equal to zero,area_m2 = 0,ValueError (input rejected),"ValueError: area_m2 must be greater than 0, got 0.0",PASS
+5,Invalid,Negative power,ac_kw = -3,ValueError (input rejected),"ValueError: ac_kw must be non-negative, got -3.0",PASS
+6,Invalid,Operating hours above 24,hours_per_day = 25,ValueError (input rejected),"ValueError: hours_per_day must be between 0 and 24, got 25.0",PASS
